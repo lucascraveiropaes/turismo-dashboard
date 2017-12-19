@@ -1,0 +1,32 @@
+#map {
+    height: 350px;
+    width: 100%;
+}
+
+#btn-search-maps {
+    position: absolute;
+    display: inline;
+    top: -4px;
+    right: 16px;
+}
+
+/* Section Title */
+.section-title {
+    width: 100%;
+}
+.section-title * {
+    display: inline-block;
+    vertical-align: middle;
+}
+.section-title .right {
+    float: right;
+    top: 10px;
+}
+
+/* Card */
+.card-image-dark {
+    background-color: #000;
+}
+.card-image-dark img {
+    opacity: 0.7;
+}
