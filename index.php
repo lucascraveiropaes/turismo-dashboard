@@ -14,6 +14,11 @@
 		'templates.path' => 'views'
 	));
 
+	$container = $app->getContainer();
+	$container['view'] = function ($container) {    
+		return new \Slim\Views\PhpRenderer('./views');
+	};
+
 	use Psr\Http\Message\RequestInterface as Request;
 	use Psr\Http\Message\ResponseInterface as Response;
 
@@ -39,28 +44,7 @@
 	    return $next($request, $response);
 	});
 
-	/*******************************************************************************\
-	|                                                                               |
-	|                                    Index                                      |
-	|                                                                               |
-	\*******************************************************************************/
-
-	$container = $app->getContainer();
-	$container['view'] = function ($container) {    
-		return new \Slim\Views\PhpRenderer('./views');
-	};
-
-	// Teste
-	/*$app->get('/a/{ t }', function ($request, $response, $param) {
-	    
-	    $data = array(
-	      	'name' => $param['t']
-      	);
-
-		return $this->view->render($response, 'index.php', $data);
-	});*/
-
-	// Index
+	// Dashboard
 	$app->get('/', function ($request, $response, $args) {
 		return $this->view->render($response, 'dashboard.php');
 	});
@@ -69,6 +53,13 @@
 
 	include './routes/circuitos.php';
 
+	include './routes/comercios.php';
+
+	include './routes/atividades.php';
+
+	include './routes/eventos.php';
+
+	include './routes/simbolos.php';
 
 	$app->run();
 ?>

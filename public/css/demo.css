@@ -30,3 +30,34 @@
 .card-image-dark img {
     opacity: 0.7;
 }
+
+/* File Upload and Preview */
+.file-upload {
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.file-upload input {
+    display: none;
+}
+
+.thumbnail {
+    height: 110px !important;
+    width: auto !important;
+    margin: 3px;
+    float: left;
+}
+
+#clear {
+    display: none;
+}
+
+#file-preview {
+    padding: 10px;
+    border: 4px dotted #cccccc;
+    display: none;    
+    float: right;
+    margin: 20px auto;
+    width: 100%;
+}

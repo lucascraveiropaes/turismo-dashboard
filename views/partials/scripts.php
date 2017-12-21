@@ -26,10 +26,13 @@
     <!-- Sliders Plugin, full documentation here: https://refreshless.com/nouislider/ -->
     <script src="/public/js/nouislider.min.js"></script>
 
+    <script src="/public/js/file-upload.js"></script>
+
     <?php
         if($page == "maps") { ?>
-            <!--  Google Maps Plugin    -->
-            <script src="https://maps.googleapis.com/views/maps/api/js?key=AIzaSyAFPQibxeDaLIUHsC6_KqDdFaUdhrbhZ3M"></script> <?php
+            <!-- Google Maps Plugin -->
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU6rw5KT6CLRJViNdGxUvbpCY0ozgKr8w&callback=initMap"></script>
+            <script src="/public/js/maps.js"></script> <?php
         }
     ?>
     

@@ -1,13 +1,13 @@
 <?php include 'functions.php' ?>
 
     <!-- Calling Header -->
-    <?php getHeader("Novo Lugar - Turismo Quissamã"); ?>
+    <?php getHeader("Nova Atividade - Turismo Quissamã"); ?>
 
     <body>
         <div class="wrapper">
 
             <!-- Calling SideBar -->
-            <?php getSidebar(2) ?>
+            <?php getSidebar(5) ?>
 
             <!-- Main Content -->
             <div class="main-panel">
@@ -19,7 +19,7 @@
 
                     <div class="container-fluid">
                         <div class="section-title">
-                            <h3>Adicionar Novo Lugar</h3>
+                            <h3>Adicionar Nova Atividade</h3>
                             <a class="btn btn-primary right" href="/lugares/">Lista Completa<div class="ripple-container"></div></a>
                         </div>
                         <br>
@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="card-content">
                                         <h4 class="card-title">Insira as Informações Corretamente</h4>
-                                        <form method="post" action="/lugares/novo" id="novo-lugar">
+                                        <form method="#" action="#">
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <?php
@@ -139,24 +139,18 @@
                                                     </a>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <?php
-                                                        input(array(
-                                                            'titulo' => 'Latitude',
-                                                            'type' => 'text',
-                                                            'name' => 'latitude',
-                                                            'value' => '0'
-                                                        ));
-                                                    ?>
+                                                    <div class="form-group label-floating is-focused">
+                                                        <label class="control-label">Latitude</label>
+                                                        <input type="text" class="form-control" name="latitude" id="latitude" value="0"></input>
+                                                        <span class="material-input"></span>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <?php
-                                                        input(array(
-                                                            'titulo' => 'Longitude',
-                                                            'type' => 'text',
-                                                            'name' => 'longitude',
-                                                            'value' => '0'
-                                                        ));
-                                                    ?>
+                                                    <div class="form-group label-floating is-focused">
+                                                        <label class="control-label">Longitude</label>
+                                                        <input type="text" class="form-control" name="longitude" id="longitude" value="0"></input>
+                                                        <span class="material-input"></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -164,26 +158,8 @@
                                                     <div id="map"></div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-12" style="text-align: center;">
-                                                    <div class="file-upload">
-                                                        <input id="files" type="file" name="imagens" multiple>
-
-                                                        <a class="btn btn-primary" id="upload-trigger">Adicionar Imagens</a>
-
-                                                        <a class="btn btn-danger" id="clear" style="padding: 13.5px 47px">
-                                                            Limpar
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <output id="file-preview"></output>
-                                                </div>
-                                            </div>
                                             <br>
-                                            <button type="submit" id="submit" class="btn btn-primary">Adicionar Lugar</button>
+                                            <button type="submit" class="btn btn-primary">Adicionar</button>
                                         </form>
                                     </div>
                                 </div>
@@ -200,6 +176,6 @@
     </body>
 
     <!-- Calling Scripts -->
-    <?php getScripts("maps"); ?>
+    <?php getScripts(); ?>
 
 </html>

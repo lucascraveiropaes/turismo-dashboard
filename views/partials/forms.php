@@ -15,7 +15,7 @@
 				echo '<div class="form-group label-floating is-empty">';
 			} ?>
 	            <label class="control-label"> <?= $input['titulo'] ?> </label>
-	            <input type="<?= $input['type'] ?>" name="<?= $input['name'] ?>" value="<?= $input['value'] ?>" class="form-control">
+	            <input type="<?= $input['type'] ?>" name="<?= $input['name'] ?>" id="<?= $input['name'] ?>" value="<?= $input['value'] ?>" class="form-control">
 	            <span class="material-input"></span>
 	        </div><?php
 	    }
@@ -32,7 +32,7 @@
 	                <span class="btn btn-rose btn-round btn-file">
 	                    <span class="fileinput-new">Selecionar Imagem</span>
 	                    <span class="fileinput-exists">Trocar</span>
-	                    <input type="file" name="<?= $file['nome'] ?>">
+	                    <input type="file" name="<?= $nome ?>" id="<?= $nome ?>" multiple>
 	                </span>
 	                <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remover</a>
 	            </div>

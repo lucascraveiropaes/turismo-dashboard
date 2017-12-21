@@ -32,14 +32,16 @@
 	                        	 	<?php
 	                        	 		$body = $table['body'];
 
-	                        	 		foreach ($body as $item) {
-	                        	 			if (preg_match('/(\.jpg|\.png|\.bmp)$/', $item)) {
-	                        	 				echo "<td><img src='$item' style='width: 120px; border-radius: 4px'></td>";
-	                        	 			}
-	                        	 			else {
-												echo "<td>$item</td>";
-	                        	 			}	
-	                        	 		}
+	                        	 		if ($body) {
+	                        	 			foreach ($body as $item) {
+		                        	 			if (preg_match('/(\.jpg|\.png|\.bmp)$/', $item)) {
+		                        	 				echo "<td><img src='$item' style='width: 120px; border-radius: 4px'></td>";
+		                        	 			}
+		                        	 			else {
+													echo "<td>$item</td>";
+		                        	 			}	
+		                        	 		}
+	                        	 		}	                        	 		
 	                        	 	?>
                                 </tr>
                             </tbody>

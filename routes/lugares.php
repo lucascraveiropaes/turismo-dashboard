@@ -3,14 +3,13 @@
 	** Rotas relacionadas à lugares
 	**/
 
-	// Lugares
+	// Página de Lista de Lugares
 	$app->get('/lugares', function ($request, $response, $args) {
 		return $this->view->render($response, 'lugares-lista.php');
 	});
 
-	// Lugares Novo
+	// Página Para Cadastrar Novo Lugar
 	$app->get('/lugares/novo', function ($request, $response, $args) {
 		return $this->view->render($response, 'lugares-novo.php');
 	});
-
 ?>
