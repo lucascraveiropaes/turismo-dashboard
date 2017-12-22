@@ -27,10 +27,11 @@
                                 <?php
 
                                     $head = array(
-                                        1 => 'Nome',
-                                        2 => 'Espaço',
-                                        3 => 'Descrição',
-                                        4 => 'Horário de Funcionamento'
+                                        'Nome',
+                                        'Espaço',
+                                        'Descrição',
+                                        'Horário de Funcionamento',
+                                        'Imagem (Thumbnail)'
                                     );
 
                                     $tabela = array(
@@ -66,23 +67,24 @@
                 method: "GET",
                 url: "http://localhost:9000/lugares/"
             }).done(function( data ) {
-
-                data = $.parseJSON(data);
+                data = jQuery.parseJSON(data);
 
                 jQuery.each(data, function (index, value) {
                     var html = "";
                     var nome = value.nome;
                     var espaco = value.espaco;
                     var descricao = value.descricao;
-
+                    var fInicio = value.funcionamento_inicio;
+                    var fFim = value.funcionamento_fim;
+                    var imagem = value.imagens[0].url;
+                    
                     html += '<tr>';
                     html += '<td>'+nome+'</td>';
                     html += '<td>'+espaco+'</td>';
-                    html += '<td>'+descricao.substr(0, 25)+'</td>';
-                    html += '<td></td>';
+                    html += '<td>'+descricao.substr(0, 55)+'...'+'</td>';
+                    html += '<td>'+fInicio + " - " + fFim + '</td>';
+                    html += '<td class="thumbnail"><img src="'+imagem+'"></td>';
                     html += '<tr>';
-
-                    alert(html);
 
                     $('tbody').append(html);
                 });

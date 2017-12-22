@@ -51,14 +51,16 @@
 	}
 
 	function select($select = null) {
- 		$options = $select['options']; ?>
-
+ 		$options = $select['options'];
+ 		$i = 1; ?>
+ 		
         <div class="btn-group bootstrap-select">
             <select class="selectpicker" data-style="btn btn-primary btn-round" title="<?= $select['titulo'] ?>" name="<?= $select['name'] ?>"> <?php
 
             		// Listando options
 	    	 		foreach ($options as $option) {
-	    	 			echo "<option value='$option'>$option</td>";
+	    	 			echo "<option value='$i'>$option</td>";
+	    	 			$i++;
 	    	 		} ?>
 
             </select>

@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="card-content">
                                         <h4 class="card-title">Insira as Informações Corretamente</h4>
-                                        <form method="post" action="/lugares/novo" id="novo-lugar">
+                                        <form method="post" action="http://localhost:9000/lugares/novo" id="novo-lugar" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <?php
@@ -167,7 +167,7 @@
                                             <div class="row">
                                                 <div class="col-md-12" style="text-align: center;">
                                                     <div class="file-upload">
-                                                        <input id="files" type="file" name="imagens" multiple>
+                                                        <input id="files" type="file" name="imagens[]" multiple>
 
                                                         <a class="btn btn-primary" id="upload-trigger">Adicionar Imagens</a>
 
@@ -201,5 +201,28 @@
 
     <!-- Calling Scripts -->
     <?php getScripts("maps"); ?>
+
+    <!--script type="text/javascript">
+    //<![CDATA[
+        $("#novo-lugar").submit(function (event) {
+            event.preventDefault();
+
+            var dados = jQuery(this).serialize();
+
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:9000/lugares/novo",
+                data: dados,
+                success: function() {
+                    alert("Lugar Salvo Com Sucesso!");
+                    window.setTimeout("location.href='/lugares/'", 100);
+                },
+                error: function() {
+                    alert("Não Foi Possível Atender Sua Solicitação no Momento.");
+                }
+            });
+        });
+    //]]>
+    </script-->
 
 </html>
