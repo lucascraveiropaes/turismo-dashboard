@@ -119,7 +119,7 @@
 
                 <script>
                     $(function(){
-                        $('#editor').froalaEditor({
+                        $('.editor').froalaEditor({
                             height: 450
                         })
                     });

@@ -46,17 +46,6 @@
 
                                                 <div class="col-md-4">
                                                     <?php
-                                                        input(array(
-                                                            'titulo' => 'Espaço (m²)',
-                                                            'type' => 'number',
-                                                            'name' => 'espaco',
-                                                            'value' => null
-                                                        ));
-                                                    ?>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <?php
                                                         select(array(
                                                             'titulo' => 'Circuitos',
                                                             'name' => 'circuito',
@@ -64,9 +53,7 @@
                                                         ));
                                                     ?>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
                                                 <div class="col-md-4">
                                                     <?php
                                                         select(array(
@@ -76,8 +63,11 @@
                                                         ));
                                                     ?>
                                                 </div>
+                                            </div>
 
-                                                <div class="col-md-4">
+                                            <div class="row">
+
+                                                <div class="col-md-6">
                                                     <?php
                                                         input(array(
                                                             'titulo' => 'Horário de Funcionamento (Início)',
@@ -88,7 +78,7 @@
                                                     ?>
                                                 </div>
 
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <?php
                                                         input(array(
                                                             'titulo' => 'Horário de Funcionamento (Fim)',
@@ -102,8 +92,17 @@
 
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <input type="hidden" name="descricao" id="descricao">
-                                                    <div id="editor" style="margin: 20px auto 30px">Descrição</div>
+                                                    <h3>Descrição</h3>
+                                                    <textarea" style="margin: 20px auto 30px" name="descricao" id="descricao" class="editor"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h3>Informações Extras</h3>
+                                                    <textarea" style="margin: 20px auto 30px" name="informacoes" id="informacoes" class="editor"></textarea>
                                                 </div>
                                             </div>
 
@@ -198,6 +197,14 @@
         $("#novo-lugar").submit(function (event) {
             event.preventDefault();
 
+            var descricao = $('.editor#descricao').froalaEditor('html.get');
+            $("#novo-lugar input[name=descricao]").val( descricao );
+
+            alert( $("#novo-lugar input[name=descricao]").val() );
+
+            var informacoes = $('.editor#informacoes').froalaEditor('html.get');
+            $("#novo-lugar input[name=informacoes]").val( informacoes );
+
             var dados = new FormData(this);
 
             $.ajax({
@@ -260,7 +267,7 @@
             }).done(function( data ) {
                 data = jQuery.parseJSON(data);
 
-                for (var i = 0; i <= data.length; i++) {                    
+                for (var i = 0; i < data.length; i++) {                    
                     var html = "";
                     var id = data[i].id;
                     var nome = data[i].nome;
