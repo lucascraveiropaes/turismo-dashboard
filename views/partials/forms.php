@@ -43,7 +43,7 @@
 	function textarea($textarea = null) {
 		if ($textarea) { ?>
             <div class="form-group label-floating is-empty">
-                <label class="control-label"><?= $textarea['titulo'] ?></label>
+                <label class="control-label"><?=$textarea['titulo'] ?></label>
                 <textarea class="form-control" name="<?= $textarea['name'] ?>" rows="<?= $textarea['rows'] ?>"></textarea>
                 <span class="material-input"></span>
             </div><?php
@@ -54,14 +54,17 @@
  		$options = $select['options'];
  		$i = 1; ?>
  		
-        <div class="btn-group bootstrap-select">
-            <select class="selectpicker" data-style="btn btn-primary btn-round" title="<?= $select['titulo'] ?>" name="<?= $select['name'] ?>"> <?php
+        <div class="btn-group bootstrap-select" id="<?= $select['name'] ?>">
+            <select class="selectpicker" data-style="btn btn-primary btn-round"
+            	title="<?= $select['titulo'] ?>" name="<?= $select['name'] ?>"><?php
 
-            		// Listando options
-	    	 		foreach ($options as $option) {
-	    	 			echo "<option value='$i'>$option</td>";
-	    	 			$i++;
-	    	 		} ?>
+            		if ($options) {
+	            		// Listando options
+		    	 		foreach ($options as $option) {
+		    	 			echo "<option value='$i'>$option</td>";
+		    	 			$i++;
+		    	 		}
+            		} ?>
 
             </select>
         </div><?php

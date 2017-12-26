@@ -21,6 +21,7 @@
 .section-title .right {
     float: right;
     top: 10px;
+    z-index: 12;
 }
 
 /* Card */
@@ -45,7 +46,7 @@
 .thumbnail {
     height: 110px !important;
     width: auto !important;
-    margin: 3px;
+    margin: auto;
     float: left;
 }
 

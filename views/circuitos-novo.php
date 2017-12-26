@@ -31,9 +31,9 @@
                                     </div>
                                     <div class="card-content">
                                         <h4 class="card-title">Insira as Informações Corretamente</h4>
-                                        <form method="#" action="#">
+                                        <form method="post" action="http://localhost:9000/circuitos/novo" id="novo-circuito" enctype="multipart/form-data">
                                             <div class="row">
-                                                <div class="col-md-8">
+                                                <div class="col-md-12">
                                                     <?php
                                                         input(array(
                                                             'titulo' => 'Nome',
@@ -44,8 +44,21 @@
                                                     ?>
                                                 </div>
 
-                                                <div class="col-md-4">
-                                                    <?php inputFile('imagem'); ?>
+                                                <div class="col-md-12">
+                                                    <div class="file-upload" style="text-align: center;">
+                                                        <input id="files" type="file" name="imagem">
+
+                                                        <a class="btn btn-primary" id="upload-trigger">Adicionar Imagens</a>
+
+                                                        <a class="btn btn-danger" id="clear" style="padding: 13.5px 47px">
+                                                            Limpar
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <output id="file-preview"></output>
                                                 </div>
                                             </div>
                                             <br>
@@ -66,6 +79,39 @@
     </body>
 
     <!-- Calling Scripts -->
-    <?php getScripts(); ?>
+    <?php
+        $footer = array(
+            'formulario' => true
+        );
+    ?>
+    <?php getScripts($footer); ?>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        $("#novo-circuito").submit(function (event) {
+            event.preventDefault();
+
+            var dados = new FormData(this);
+
+            //var dados = jQuery(this).serialize();
+
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:9000/circuitos/novo",
+                data: dados,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    alert("Lugar Salvo Com Sucesso!");
+                    window.setTimeout("location.href='/circuitos/'", 100);
+                },
+                error: function() {
+                    alert("Não Foi Possível Atender Sua Solicitação no Momento.");
+                }
+            });
+        });
+    //]]>
+    </script>
 
 </html>

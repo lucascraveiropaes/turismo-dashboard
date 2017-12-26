@@ -29,7 +29,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-	                        	 	<?php
+	                        	 	<!--?php
 	                        	 		$body = $table['body'];
 
 	                        	 		if ($body) {
@@ -42,7 +42,7 @@
 		                        	 			}	
 		                        	 		}
 	                        	 		}	                        	 		
-	                        	 	?>
+	                        	 	?-->
                                 </tr>
                             </tbody>
                         </table>

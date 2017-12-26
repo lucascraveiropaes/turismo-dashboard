@@ -57,15 +57,10 @@
 
                                                 <div class="col-md-4">
                                                     <?php
-                                                        $options = array(
-                                                            'Circuito Histórico',
-                                                            'Circuito Ético',
-                                                            'Circuito Ecológico'
-                                                        );
                                                         select(array(
                                                             'titulo' => 'Circuitos',
                                                             'name' => 'circuito',
-                                                            'options' => $options
+                                                            'options' => null
                                                         ));
                                                     ?>
                                                 </div>
@@ -74,16 +69,10 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <?php
-                                                        $options = array(
-                                                            '1',
-                                                            '2',
-                                                            '2'
-                                                        );
-
                                                         select(array(
                                                             'titulo' => 'Símbolos Turísticos',
-                                                            'name' => 'simbolos_turisticos',
-                                                            'options' => $options
+                                                            'name' => 'simbolos',
+                                                            'options' => null
                                                         ));
                                                     ?>
                                                 </div>
@@ -113,13 +102,8 @@
 
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <?php
-                                                        textarea(array(
-                                                            'titulo' => 'Descrição',
-                                                            'name' => 'descricao',
-                                                            'rows' => 10
-                                                        ));
-                                                    ?>
+                                                    <input type="hidden" name="descricao" id="descricao">
+                                                    <div id="editor" style="margin: 20px auto 30px">Descrição</div>
                                                 </div>
                                             </div>
 
@@ -200,19 +184,29 @@
     </body>
 
     <!-- Calling Scripts -->
-    <?php getScripts("maps"); ?>
+    <?php
+        $footer = array(
+            'mapa' => true,
+            'formulario' => true,
+            'editor' => true
+        );
+    ?>
+    <?php getScripts($footer); ?>
 
-    <!--script type="text/javascript">
+    <script type="text/javascript">
     //<![CDATA[
         $("#novo-lugar").submit(function (event) {
             event.preventDefault();
 
-            var dados = jQuery(this).serialize();
+            var dados = new FormData(this);
 
             $.ajax({
                 method: "POST",
                 url: "http://localhost:9000/lugares/novo",
                 data: dados,
+                cache: false,
+                contentType: false,
+                processData: false,
                 success: function() {
                     alert("Lugar Salvo Com Sucesso!");
                     window.setTimeout("location.href='/lugares/'", 100);
@@ -222,7 +216,81 @@
                 }
             });
         });
+
+        $(document).ready(function () {
+
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:9000/simbolos"
+            }).done(function( data ) {
+
+                data = jQuery.parseJSON(data);
+
+                for (var i = 0; i < data.length; i++) {
+                    var id = data[i].id;
+                    var nome = data[i].nome;
+                    var descricao = data[i].descricao;
+                    var imagem = "/public/img/image_placeholder.jpg";
+
+                    if (data[i].url != "" && data[i].url) {
+                        var imagem = data[i].url;
+                    }
+
+                    var array = {
+                        id: id,
+                        nome: nome,
+                        imagem: imagem,
+                        i: i,
+                        selectID: '#simbolos select',
+                        listID: '#simbolos .dropdown-menu.inner'
+                    };
+
+                    addSelect(array);
+                }
+
+                
+            });
+        });
+
+        $(document).ready(function () {
+
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:9000/circuitos"
+            }).done(function( data ) {
+                data = jQuery.parseJSON(data);
+
+                for (var i = 0; i <= data.length; i++) {                    
+                    var html = "";
+                    var id = data[i].id;
+                    var nome = data[i].nome;
+                    var lugares = data[i].lugares;
+
+                    var array = {
+                        id: id,
+                        nome: nome,
+                        imagem: null,
+                        i: i,
+                        selectID: '#circuito select',
+                        listID: '#circuito .dropdown-menu.inner'
+                    };
+
+                    addSelect(array);
+                }
+
+                
+            });
+        });
     //]]>
-    </script-->
+    </script>
+
+    <style>
+        .select-item img {
+            width: 50px;
+            margin-right: 10px;
+        }
+    </style>
+
+    
 
 </html>

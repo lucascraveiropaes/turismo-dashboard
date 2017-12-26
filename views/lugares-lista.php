@@ -28,8 +28,8 @@
 
                                     $head = array(
                                         'Nome',
-                                        'Espaço',
                                         'Descrição',
+                                        'Informações',
                                         'Horário de Funcionamento',
                                         'Imagem (Thumbnail)'
                                     );
@@ -69,25 +69,31 @@
             }).done(function( data ) {
                 data = jQuery.parseJSON(data);
 
-                jQuery.each(data, function (index, value) {
+                for (var i = 0; i <= data.length; i++) {                    
                     var html = "";
-                    var nome = value.nome;
-                    var espaco = value.espaco;
-                    var descricao = value.descricao;
-                    var fInicio = value.funcionamento_inicio;
-                    var fFim = value.funcionamento_fim;
-                    var imagem = value.imagens[0].url;
-                    
+                    var nome = data[i].nome;
+                    var informacoes = data[i].informacoes;
+                    var descricao = data[i].descricao;
+                    var fInicio = data[i].funcionamento_inicio;
+                    var fFim = data[i].funcionamento_fim;
+
+                    if (data[i].imagem_existe) {
+                        var imagem = data[i].imagens[0].url;
+                    }
+                    else {
+                        var imagem = "/public/img/image_placeholder.jpg";
+                    }
+
                     html += '<tr>';
                     html += '<td>'+nome+'</td>';
-                    html += '<td>'+espaco+'</td>';
                     html += '<td>'+descricao.substr(0, 55)+'...'+'</td>';
+                    html += '<td>'+informacoes.substr(0, 45)+'</td>';
                     html += '<td>'+fInicio + " - " + fFim + '</td>';
                     html += '<td class="thumbnail"><img src="'+imagem+'"></td>';
-                    html += '<tr>';
+                    html += '</tr>';
 
                     $('tbody').append(html);
-                });
+                }
 
                 
             });

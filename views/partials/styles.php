@@ -1,5 +1,5 @@
 <!-- Bootstrap core CSS -->
-<link href="/public/css/bootstrap.min.css" rel="stylesheet">
+<link href="/public/css/bootstrap.css" rel="stylesheet">
 <!-- Material Dashboard CSS -->
 <link href="/public/css/material-dashboard.css?v=1.2.0" rel="stylesheet">
 <!-- CSS for Demo Purpose, don't include it in your project -->
